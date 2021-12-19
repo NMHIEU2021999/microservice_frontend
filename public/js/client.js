@@ -1,3 +1,7 @@
+const { json } = require("body-parser");
+const { is } = require("express/lib/request");
+
+const isAdmin = false;
 function login() {
     var username = $('#username-modal').val();
     var password = $('#password-modal').val();
@@ -174,7 +178,10 @@ function username(id, callback) {
         success: function (data, textStatus, jqXHR) {
             json = JSON.parse(data);
             if (json.status_code !== 500) {
-                console.log(json);
+                if(json.username == 'admin'){
+                    isAdmin = true;
+                }
+                console.log("isAdmin: " + isAdmin)
                 callback(json.firstName + " " + json.lastName);
             } else {
                 console.error('Could not get user information: ' + id + ', due to: ' + json.status_text + ' | ' + json.error);

@@ -1,7 +1,7 @@
 const { json } = require("body-parser");
 const { is } = require("express/lib/request");
 
-const isAdmin = false;
+var isAdmin = false;
 function login() {
     var username = $('#username-modal').val();
     var password = $('#password-modal').val();
@@ -178,7 +178,7 @@ function username(id, callback) {
         success: function (data, textStatus, jqXHR) {
             json = JSON.parse(data);
             if (json.status_code !== 500) {
-                if(json.username == 'admin'){
+                if(json.username === "admin"){
                     isAdmin = true;
                 }
                 console.log("isAdmin: " + isAdmin)

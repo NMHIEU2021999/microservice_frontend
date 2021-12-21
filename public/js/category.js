@@ -33,7 +33,7 @@ $('#add-product').on('submit', function (e) {
     console.log(tags)
     $.ajaxSetup({
         xhrFields: {
-          withCredentials: true
+            withCredentials: true
         }
     });
     $.ajax({
@@ -42,6 +42,10 @@ $('#add-product').on('submit', function (e) {
         async: false,
         xhrFields: {
             withCredentials: true
+        },
+        crossDomain: true,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Cookie", $.cookie);
         },
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {

@@ -31,9 +31,9 @@ $('#add-product').on('submit', function (e) {
     });
     console.log(data)
     console.log(tags)
-    $.ajaxSetup({
-        contentType: "application/json; charset=utf-8"
-    });
+    // $.ajaxSetup({
+    //     contentType: "application/json; charset=utf-8"
+    // });
 
     $.ajax({
         url: "catalogue",

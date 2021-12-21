@@ -269,8 +269,9 @@ _________________________________________________________ -->
                                     </div >\
                                 </div >\
                             </div > ';
-                        if($.cookie('logged_in') && isAdmin){
-                            newcomponent = '<div class="col-md-4 col-sm-6">\
+                        username($.cookie('logged_in'), function () {
+                            if (isAdmin) {
+                                newcomponent = '<div class="col-md-4 col-sm-6">\
                             <div class="product">\
                                     <div class="flip-container">\
                                         <div class="flipper">\
@@ -305,7 +306,10 @@ _________________________________________________________ -->
                                     </div >\
                                 </div >\
                             </div > ';
-                        }
+                            }
+
+                        });
+
                         $('#products').append(newcomponent);
                     });
                 }

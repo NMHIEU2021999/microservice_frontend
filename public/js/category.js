@@ -43,10 +43,6 @@ $('#add-product').on('submit', function (e) {
         xhrFields: {
             withCredentials: true
         },
-        crossDomain: true,
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("Cookie", $.cookie());
-        },
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
             location.reload();

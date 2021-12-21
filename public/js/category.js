@@ -41,7 +41,9 @@ $('#add-product').on('submit', function (e) {
         async: true,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
-            addTimeout.clearTimeout();
+            if(addTimeout){
+                addTimeout.clearTimeout();
+            }
             $('#alertContent').html("A new product has been added successfully!");
             closeAddForm();
             $('.alert').alert();

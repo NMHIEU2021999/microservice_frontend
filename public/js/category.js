@@ -31,12 +31,14 @@ $('#add-product').on('submit', function (e) {
     });
     console.log(data)
     console.log(tags)
+    $.ajaxSetup({
+        xhrFields: {
+          withCredentials: true
+        }
+    });
     $.ajax({
         url: "/catalogue",
         type: "POST",
-        xhrFields: {
-            withCredentials: true
-        },
         async: false,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {

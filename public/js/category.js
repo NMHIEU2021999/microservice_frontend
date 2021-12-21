@@ -8,5 +8,6 @@ closeAddForm = ()=>{
 
 submitAddForm = (e)=>{
     e.preventDefault();
+    debugger
     console.log("abcd")
 }

@@ -403,12 +403,11 @@ _________________________________________________________ -->
 
                 }
             });
-            
             $.getJSON('/catalogue/size', { tags: tags }, function (data) {
                 if (data.size <= size) {
                     size = data.size;
                 }
-                $('#totalProducts').append('Showing <strong>' + size + '</strong> of <strong>' + data.size + '</strong> products');
+                $('#totalProducts').html('Showing <strong>' + size + '</strong> of <strong>' + data.size + '</strong> products');
                 var totalNumPages = Math.ceil(data.size / size);
                 console.log("Total pages: " + totalNumPages);
                 var pagination = "";
@@ -420,7 +419,7 @@ _________________________________________________________ -->
                     }
                 }
                 console.log("Pagination: " + pagination);
-                $('#pagination').append(pagination);
+                $('#pagination').html(pagination);
                 var pageSize = [];
                 for (var i = baseSize; i < data.size; i = i + 3) {
                     pageSize.push(i);
@@ -434,7 +433,7 @@ _________________________________________________________ -->
                         pageSizeHtml = pageSizeHtml + '<a href="#" onclick=setNewPageSize(' + p + ') class="btn btn-default btn-sm">' + p + '</a>';
                     }
                 })
-                $('#products-number').append(pageSizeHtml);
+                $('#products-number').html(pageSizeHtml);
             });
 
         }

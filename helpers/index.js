@@ -23,7 +23,7 @@
   };
 
   helpers.sessionMiddleware = function(err, req, res, next) {
-    if(!req.cookies.logged_in) {
+    if(!req.cookies || !req.cookies.logged_in) {
       res.session.customerId = null;
     }
   };

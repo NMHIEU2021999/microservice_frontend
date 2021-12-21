@@ -123,66 +123,66 @@ _________________________________________________________ -->
                     <div class="row" style="display: flex; padding-left: 32px; padding-right: 32px; margin-bottom: 6px;"
                         id="add-container">
 
-                        <div class="modal fade" id="modalAddForm" data-keyboard="false" data-backdrop="static">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Add new Product</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div><div class="container"></div>
-                                    <form id='add-staff' onsubmit= "e => submitAddForm(e)">
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Tên nhân viên</label>
-                                                <input value={this.state.data.name} required="required" name="name" type="text" class="form-control" placeholder="Nhập tên nhân viên" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Vị trí</label>
-                                                <select value={this.state.data.role} required="required" name="role"  class="form-control">
-                                                    <option value="Lễ Tân">Lễ Tân</option>
-                                                    <option value="Quản lý">Quản lý</option>
-                                                    <option value="Thử việc">Thử việc</option>
-                                                    <option value="Phục vụ">Phục vụ</option>
-                                                    <option value="Lao công">Lao công</option>
-                                                    <option value="Bảo vệ">Bảo vệ</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Ngày sinh</label>
-                                                <input value={this.state.data.birthday} required="required" name="birthday"  type="date" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Số CMT/CCCD</label>
-                                                <input value={this.state.data.idNumber} required="required" name="idNumber" type="number" class="form-control" placeholder="Nhập số CMT/CCCD" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Số điện thoại</label>
-                                                <input value={this.state.data.phonenumber} required="required" pattern='((09|03|07|08|05|02)+([0-9]{8})\b)' name="phonenumber" type="tel" class="form-control" placeholder="Nhập số điện thoại của nhân viên" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Địa chỉ</label>
-                                                <input value={this.state.data.address} required="required" name="address" type="text" class="form-control" placeholder='Nhập địa chỉ nhân viên' />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Trạng thái</label>
-                                                <select value={this.state.data.status} required="required" name="status" class="form-control">
-                                                    <option value="Đang làm việc">Đang làm việc</option>
-                                                    <option value="Đã thôi việc">Đã thôi việc</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Mô tả</label>
-                                                <textarea value={this.state.data.description} name="description"  class="form-control" rows="3" placeholder="Nhập mô tả"></textarea>
-                                            </div>
+                      </div>
+                      <div class="modal fade" id="modalAddForm" data-keyboard="false" data-backdrop="static">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add new Product</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div><div class="container"></div>
+                                <form id='add-staff' onsubmit= "e => submitAddForm(e)">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Tên nhân viên</label>
+                                            <input value={this.state.data.name} required="required" name="name" type="text" class="form-control" placeholder="Nhập tên nhân viên" />
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary col-2" onClick="closeAddForm">Hủy</button>
-                                            <button type='submit' class="btn btn-primary col-2" >Thêm</button>
+                                        <div class="form-group">
+                                            <label>Vị trí</label>
+                                            <select value={this.state.data.role} required="required" name="role"  class="form-control">
+                                                <option value="Lễ Tân">Lễ Tân</option>
+                                                <option value="Quản lý">Quản lý</option>
+                                                <option value="Thử việc">Thử việc</option>
+                                                <option value="Phục vụ">Phục vụ</option>
+                                                <option value="Lao công">Lao công</option>
+                                                <option value="Bảo vệ">Bảo vệ</option>
+                                            </select>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="form-group">
+                                            <label>Ngày sinh</label>
+                                            <input value={this.state.data.birthday} required="required" name="birthday"  type="date" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Số CMT/CCCD</label>
+                                            <input value={this.state.data.idNumber} required="required" name="idNumber" type="number" class="form-control" placeholder="Nhập số CMT/CCCD" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Số điện thoại</label>
+                                            <input value={this.state.data.phonenumber} required="required" pattern='((09|03|07|08|05|02)+([0-9]{8})\b)' name="phonenumber" type="tel" class="form-control" placeholder="Nhập số điện thoại của nhân viên" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa chỉ</label>
+                                            <input value={this.state.data.address} required="required" name="address" type="text" class="form-control" placeholder='Nhập địa chỉ nhân viên' />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Trạng thái</label>
+                                            <select value={this.state.data.status} required="required" name="status" class="form-control">
+                                                <option value="Đang làm việc">Đang làm việc</option>
+                                                <option value="Đã thôi việc">Đã thôi việc</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mô tả</label>
+                                            <textarea value={this.state.data.description} name="description"  class="form-control" rows="3" placeholder="Nhập mô tả"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary col-2" onclick="closeAddForm()">Hủy</button>
+                                        <button type='submit' class="btn btn-primary col-2" >Thêm</button>
+                                    </div>
+                                </form>
                             </div>
-                    </div>
+                        </div>
                     <!-- *** PRODUCTS *** -->
 
                     <div id="row products">

@@ -15,6 +15,8 @@ submitAddForm = (e) => {
     console.log("abcd")
 }
 
+let addTimeout;
+
 $('#add-product').on('submit', function (e) {
     e.preventDefault();
     let data = {};

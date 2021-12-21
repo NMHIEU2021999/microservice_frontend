@@ -33,7 +33,7 @@ $('#add-product').on('submit', function (e) {
     console.log(tags)
     
     $.ajax({
-        url: "/catalogue",
+        url: "catalogue",
         type: "POST",
         xhrFields: {
             withCredentials: true

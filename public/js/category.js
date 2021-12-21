@@ -18,7 +18,10 @@ submitAddForm = (e)=>{
 $('#add-product').on('submit', function(e){
     e.preventDefault();
     let data = {};
-    data =  $('#add-product').serializeArray();
+    data.name = $("#add-name").val();
+    data.price = $("#add-price").val();
+    data.count = $("#add-count").val();
+    data.description = $("#add-description").val();
     console.log(data)
     // $.ajax({
     //     url: "addresses",

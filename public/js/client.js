@@ -172,6 +172,7 @@ function username(id, callback) {
     console.log("Requesting user account information " + id);
     if(!id){
         isAdmin = false;
+        callback(json.firstName + " " + json.lastName);
         return;
     }
     $.ajax({

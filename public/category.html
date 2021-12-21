@@ -157,7 +157,6 @@ _________________________________________________________ -->
     <!-- *** SCRIPTS TO INCLUDE ***
 _________________________________________________________ -->
     <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/client.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/waypoints.min.js"></script>
@@ -166,7 +165,7 @@ _________________________________________________________ -->
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
     <script src="js/jquery.query-object.js"></script>
-
+    <script src="js/client.js"></script>
     <script>
 
         $(document).ready(function () {
@@ -239,8 +238,10 @@ _________________________________________________________ -->
 
             $.getJSON('/catalogue', { page: page, size: size, tags: tags }, function (data) {
                 if (data != null) {
-                    $.each(data, function (index, element) {
-                        let newcomponent = '<div class="col-md-4 col-sm-6">\
+                    username($.cookie('logged_in'), function () {
+
+                        $.each(data, function (index, element) {
+                            let newComponent = '<div class="col-md-4 col-sm-6">\
                             <div class="product">\
                                     <div class="flip-container">\
                                         <div class="flipper">\
@@ -269,9 +270,9 @@ _________________________________________________________ -->
                                     </div >\
                                 </div >\
                             </div > ';
-                        username($.cookie('logged_in'), function () {
+                            
                             if (isAdmin) {
-                                newcomponent = '<div class="col-md-4 col-sm-6">\
+                                newComponent = '<div class="col-md-4 col-sm-6">\
                             <div class="product">\
                                     <div class="flip-container">\
                                         <div class="flipper">\
@@ -306,15 +307,17 @@ _________________________________________________________ -->
                                     </div >\
                                 </div >\
                             </div > ';
-                            }
 
+                            }
+                            $('#products').append(newComponent);
                         });
 
-                        $('#products').append(newcomponent);
                     });
+
                 }
             });
             username($.cookie('logged_in'), function () {
+                debugger
                 if (isAdmin) {
                     $('#add-container').append(
                         '<button\

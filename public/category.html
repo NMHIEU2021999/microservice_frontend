@@ -89,7 +89,6 @@ _________________________________________________________ -->
                 </div>
 
                 <div class="col-md-9">
-                    <div id="user-message"> </div>
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-4 products-showing">
@@ -260,7 +259,7 @@ _________________________________________________________ -->
                     </div>
 
 
-
+                    <div id="user-message"> </div>
                     <!-- *** PRODUCTS *** -->
 
                     <div id="row products">
@@ -404,6 +403,40 @@ _________________________________________________________ -->
 
                 }
             });
+            
+            $.getJSON('/catalogue/size', { tags: tags }, function (data) {
+                if (data.size <= size) {
+                    size = data.size;
+                }
+                $('#totalProducts').append('Showing <strong>' + size + '</strong> of <strong>' + data.size + '</strong> products');
+                var totalNumPages = Math.ceil(data.size / size);
+                console.log("Total pages: " + totalNumPages);
+                var pagination = "";
+                for (var i = 1; i <= totalNumPages; i++) {
+                    if (page == i) {
+                        pagination = pagination + '<li class="active"><a href="#" onclick=setNewPage(' + i + ')>' + i + '</a></li>';
+                    } else {
+                        pagination = pagination + '<li><a href="#" onclick=setNewPage(' + i + ')>' + i + '</a></li>';
+                    }
+                }
+                console.log("Pagination: " + pagination);
+                $('#pagination').append(pagination);
+                var pageSize = [];
+                for (var i = baseSize; i < data.size; i = i + 3) {
+                    pageSize.push(i);
+                }
+                pageSize.push(data.size);
+                var pageSizeHtml = "<strong>Show</strong>"
+                pageSize.forEach(function (p) {
+                    if (size == p) {
+                        pageSizeHtml = pageSizeHtml + '<a href="#" onclick=setNewPageSize(' + p + ') class="btn btn-primary btn-sm">' + p + '</a>';
+                    } else {
+                        pageSizeHtml = pageSizeHtml + '<a href="#" onclick=setNewPageSize(' + p + ') class="btn btn-default btn-sm">' + p + '</a>';
+                    }
+                })
+                $('#products-number').append(pageSizeHtml);
+            });
+
         }
 
         $(document).ready(function () {

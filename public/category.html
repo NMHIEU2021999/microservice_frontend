@@ -25,7 +25,8 @@
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.theme.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- theme stylesheet -->
     <link href="css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
 
@@ -76,7 +77,7 @@ _________________________________________________________ -->
 
                                 <a class="btn btn-default btn-sm btn-primary" href="#"
                                     onclick='setNewTags($("input:checkbox:checked").map(function () {return this.value;}).get().join(","));'>
-                                    <i class="fa fa-pencil"></i> Apply
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Apply
                                 </a>
 
                             </form>
@@ -119,7 +120,8 @@ _________________________________________________________ -->
                     </div>
 
 
-                    <div class="row" style="display: flex; padding-left: 32px; padding-right: 32px; margin-bottom: 6px;" id="add-container">
+                    <div class="row" style="display: flex; padding-left: 32px; padding-right: 32px; margin-bottom: 6px;"
+                        id="add-container">
 
                     </div>
                     <!-- *** PRODUCTS *** -->
@@ -263,24 +265,30 @@ _________________________________________________________ -->
                                             <a href="detail.html?id=' + element.id + '" class="btn btn-default">View detail</a>\
                                             <a href="#" onclick="addToCart(\'' + element.id + '\')" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>\
                                         </p>\
-                                    </div>\
-                                </div>\
-                            </div>');
+                                        <p class="buttons">\
+                                            <button class="btn btn-warning btn-edit" \
+                                             ><i className="fa fa-edit" ></i>&nbsp; Edit</button>\
+                                             <button className = "btn btn-danger btn-del"\
+                                             > <i className="fa fa-trash" aria-hidden="true"></i> & nbsp; Delete</button >\
+                                        </p >\
+                                    </div >\
+                                </div >\
+                            </div > ');
                     });
                 }
             });
-            username($.cookie('logged_in'), function(){
+            username($.cookie('logged_in'), function () {
                 debugger
-                if(isAdmin ){
+                if (isAdmin) {
                     $('#add-container').append(
-                    '<button\
+                        '<button\
                     class="btn btn-add btn-success" >\
                     <i class="fas fa-plus" aria-hidden="true"></i>\
                     &nbsp; Add Product\
                     </button>'
-                );
+                    );
                 }
-              
+
             });
         });
 

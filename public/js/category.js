@@ -27,7 +27,7 @@ $('#add-product').on('submit', function(e){
     data.images.push($("#img2").attr("src").split('base64,')[1]);
     data.tag = [];
     $('.add_checkbox input:checked').each(function() {
-        selected.push($(this).attr('name'));
+        data.tag.push($(this).attr('name'));
     });
     console.log(data)
     // $.ajax({

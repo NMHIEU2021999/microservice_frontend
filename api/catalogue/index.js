@@ -7,11 +7,6 @@
     helpers = require("../../helpers"),
     app = express();
 
-  var proxy = require("http-proxy").createProxyServer({
-    host: endpoints.catalogueUrl,
-    // port: 80
-  });
-
   app.get("/catalogue/images*", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
     request
@@ -30,17 +25,29 @@
     );
   });
 
-  app.use("/catalogue*", function (req, res, next) {
-    proxy.web(
-      req,
-      res,
-      {
-        target: endpoints.catalogueUrl + req.url.toString(),
-      },
-      next
-    );
+  app.post("/catalogue*", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.post(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
   });
 
+  app.put("/catalogue*", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.put(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
+  });
+
+  app.delete("/catalogue*", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.delete(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
+  });
   
   app.use("/tags-all-detail", function (req, res, next) {
     var url = endpoints.catalogueUrl + "/tags-all-detail";
@@ -54,6 +61,46 @@
 
   app.get("/tags", function (req, res, next) {
     helpers.simpleHttpRequest(endpoints.tagsUrl, res, next);
+  });
+
+  app.post("/tags*", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.post(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
+  });
+
+  app.put("/tags*", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.put(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
+  });
+
+  app.delete("/tags*", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.delete(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
+  });
+
+  app.post("/tags-catalog", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.post(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
+  });
+
+  app.delete("/tags-catalog", function (req, res, next) {
+    var url = endpoints.catalogueUrl + req.url.toString();
+    request.delete(url).json(req.body).on("error", function (e) {
+      next(e);
+    })
+    .pipe(res);
   });
 
   module.exports = app;

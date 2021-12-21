@@ -17,6 +17,7 @@ submitAddForm = (e)=>{
 
 $('#add-product').on('submit', function(e){
     e.preventDefault();
+    $("#user-message").html('<div class="alert alert-noti alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Error saving the address. ' + "hello world"+ '</div>');
     debugger
     console.log("abcd")
   });

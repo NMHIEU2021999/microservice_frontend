@@ -66,6 +66,7 @@ function register() {
 
 function logout() {
     $.removeCookie('logged_in');
+    isAdmin = false;
     location.reload();
 }
 

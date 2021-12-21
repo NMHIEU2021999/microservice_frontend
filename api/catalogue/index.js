@@ -97,7 +97,7 @@
 
   app.delete("/tags-catalog", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
-    request.delete(url).json(req.body).on("error", function (e) {
+    request.delete(url).json(req.body).on("error", function (e) {s
       next(e);
     })
     .pipe(res);

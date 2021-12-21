@@ -40,6 +40,9 @@ $('#add-product').on('submit', function (e) {
         url: "/catalogue",
         type: "POST",
         async: false,
+        xhrFields: {
+            withCredentials: true
+        },
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
             location.reload();

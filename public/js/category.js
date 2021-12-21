@@ -34,6 +34,7 @@ $('#add-product').on('submit', function (e) {
     
     $.ajax({
         url: "catalogue",
+        contentType: "application/json; charset=utf-8",
         type: "POST",
         xhrFields: {
             withCredentials: true

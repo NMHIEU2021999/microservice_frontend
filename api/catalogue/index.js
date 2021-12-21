@@ -43,14 +43,13 @@
 
   
   app.use("/tags-all-detail", function (req, res, next) {
-    proxy.web(
-      req,
-      res,
-      {
-        target: endpoints.catalogueUrl + req.url.toString(),
-      },
-      next
-    );
+    var url = endpoints.catalogueUrl + "/tags-all-detail";
+    request
+      .get(url)
+      .on("error", function (e) {
+        next(e);
+      })
+      .pipe(res);
   });
 
   app.use("/tags*", function (req, res, next) {
@@ -58,7 +57,7 @@
       req,
       res,
       {
-        target: endpoints.catalogueUrl + req.url.toString(),
+        target: endpoints.tagsUrl + req.url.toString(),
       },
       next
     );

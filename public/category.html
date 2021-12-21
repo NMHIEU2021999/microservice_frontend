@@ -137,56 +137,42 @@ _________________________________________________________ -->
                                 <form id='add-staff' onsubmit="e => submitAddForm(e)">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label>Tên nhân viên</label>
-                                            <input value={this.state.data.name} required="required" name="name"
-                                                type="text" class="form-control" placeholder="Nhập tên nhân viên" />
+                                            <label>Product name</label>
+                                            <input required="required" name="name"
+                                                type="text" class="form-control" placeholder="Enter product name" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Vị trí</label>
-                                            <select value={this.state.data.role} required="required" name="role"
-                                                class="form-control">
-                                                <option value="Lễ Tân">Lễ Tân</option>
-                                                <option value="Quản lý">Quản lý</option>
-                                                <option value="Thử việc">Thử việc</option>
-                                                <option value="Phục vụ">Phục vụ</option>
-                                                <option value="Lao công">Lao công</option>
-                                                <option value="Bảo vệ">Bảo vệ</option>
-                                            </select>
+                                            <label>Price</label>
+                                            <input required="required" name="price"
+                                                type="number" class="form-control" placeholder="Enter price of products" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Ngày sinh</label>
-                                            <input value={this.state.data.birthday} required="required" name="birthday"
-                                                type="date" class="form-control" />
+                                            <label>Count</label>
+                                            <input required="required" name="count"
+                                                type="number" class="form-control" placeholder="Enter number of products" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Số CMT/CCCD</label>
-                                            <input value={this.state.data.idNumber} required="required" name="idNumber"
-                                                type="number" class="form-control" placeholder="Nhập số CMT/CCCD" />
+                                            <label>Description</label>
+                                            <textarea name="description" required="required"
+                                                class="form-control" rows="3" style="max-width: 100%; max-height: 400px;" placeholder="Some descriptions about product"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Số điện thoại</label>
-                                            <input value={this.state.data.phonenumber} required="required"
-                                                pattern='((09|03|07|08|05|02)+([0-9]{8})\b)' name="phonenumber"
-                                                type="tel" class="form-control"
-                                                placeholder="Nhập số điện thoại của nhân viên" />
+                                        <div class="row">
+                                            <div class="col-2" style="margin-left: auto">
+                                                <b>Image1 :</b>
+                                            </div>
+                                            <div class="col-5" style="margin-right: auto">
+                                                <input type="file" required="required" name="image1" id="image1">
+                                                <img id="img1" alt="1st image" height="240px" style="display: none">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Địa chỉ</label>
-                                            <input value={this.state.data.address} required="required" name="address"
-                                                type="text" class="form-control" placeholder='Nhập địa chỉ nhân viên' />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Trạng thái</label>
-                                            <select value={this.state.data.status} required="required" name="status"
-                                                class="form-control">
-                                                <option value="Đang làm việc">Đang làm việc</option>
-                                                <option value="Đã thôi việc">Đã thôi việc</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Mô tả</label>
-                                            <textarea value={this.state.data.description} name="description"
-                                                class="form-control" rows="3" placeholder="Nhập mô tả"></textarea>
+                                        <div class="row">
+                                            <div class="col-2" style="margin-left: auto">
+                                                <b>Image2: </b>
+                                            </div>
+                                            <div class="col-5" style="margin-right: auto">
+                                                <input type="file" required="required" name="image2" id="image2">
+                                                <img id="img2" alt="1st image" height="240px" style="display: none">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -242,6 +228,7 @@ _________________________________________________________ -->
     <script src="js/jquery.query-object.js"></script>
     <script src="js/client.js"></script>
     <script src="js/category.js"></script>
+    <script src="js/previewimage_product.js"></script>
     <script>
 
         $(document).ready(function () {

@@ -49,7 +49,7 @@
 
         <div id="content">
             <div class="container">
-            
+
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="index.html">Home</a>
@@ -140,28 +140,30 @@ _________________________________________________________ -->
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Product name</label>
-                                            <input required="required" name="name" type="text" id="add-name" class="form-control"
-                                                placeholder="Enter product name" />
+                                            <input required="required" name="name" type="text" id="add-name"
+                                                class="form-control" placeholder="Enter product name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input required="required" name="price" id="add-price" type="number" class="form-control"
-                                                placeholder="Enter price of products" />
+                                            <input required="required" name="price" id="add-price" type="number"
+                                                class="form-control" placeholder="Enter price of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Count</label>
-                                            <input required="required" name="count" id="add-count"   type="number" class="form-control"
-                                                placeholder="Enter number of products" />
+                                            <input required="required" name="count" id="add-count" type="number"
+                                                class="form-control" placeholder="Enter number of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" id="add-description"  required="required" class="form-control"
-                                                rows="3" style="max-width: 100%; max-height: 100px;"
+                                            <textarea name="description" id="add-description" required="required"
+                                                class="form-control" rows="3"
+                                                style="max-width: 100%; max-height: 100px;"
                                                 placeholder="Some descriptions about product"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Tags</label>
-                                            <div id="add-tags" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                                            <div id="add-tags"
+                                                style="display: flex; flex-wrap: wrap; margin-top: 10px;">
 
                                             </div>
                                         </div>
@@ -205,28 +207,30 @@ _________________________________________________________ -->
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Product name</label>
-                                            <input required="required" name="name" type="text" id="edit-name" class="form-control"
-                                                placeholder="Enter product name" />
+                                            <input required="required" name="name" type="text" id="edit-name"
+                                                class="form-control" placeholder="Enter product name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input required="required" name="price" id="edit-price" type="number" class="form-control"
-                                                placeholder="Enter price of products" />
+                                            <input required="required" name="price" id="edit-price" type="number"
+                                                class="form-control" placeholder="Enter price of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Count</label>
-                                            <input required="required" name="count" id="edit-count"   type="number" class="form-control"
-                                                placeholder="Enter number of products" />
+                                            <input required="required" name="count" id="edit-count" type="number"
+                                                class="form-control" placeholder="Enter number of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" id="edit-description"  required="required" class="form-control"
-                                                rows="3" style="max-width: 100%; max-height: 100px;"
+                                            <textarea name="description" id="edit-description" required="required"
+                                                class="form-control" rows="3"
+                                                style="max-width: 100%; max-height: 100px;"
                                                 placeholder="Some descriptions about product"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Tags</label>
-                                            <div id="add-tags" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                                            <div id="add-tags"
+                                                style="display: flex; flex-wrap: wrap; margin-top: 10px;">
 
                                             </div>
                                         </div>
@@ -255,7 +259,7 @@ _________________________________________________________ -->
                         </div>
                     </div>
 
-           
+
 
                     <!-- *** PRODUCTS *** -->
 
@@ -315,6 +319,93 @@ _________________________________________________________ -->
         })
     </script>
     <script>
+        var size = $.query.get('size') ? $.query.get('size') : 6;
+        var page = $.query.get('page') ? $.query.get('page') : 1;
+        var tags = $.query.get('tags') ? $.query.get('tags') : "";
+        const reloadProducts = () => {
+            $.getJSON('/catalogue', { page: page, size: size, tags: tags }, function (data) {
+                if (data != null) {
+                    $("#products").html("");
+                    username($.cookie('logged_in'), function () {
+
+                        $.each(data, function (index, element) {
+                            let newComponent = '<div class="col-md-4 col-sm-6">\
+                            <div class="product">\
+                                    <div class="flip-container">\
+                                        <div class="flipper">\
+                                            <div class="front">\
+                                                <a href="detail.html?id=' + element.id + '">\
+                                                    <img src="' + element.imageUrl[0] + '" alt="" class="img-responsive">\
+                                                </a>\
+                                            </div>\
+                                            <div class="back">\
+                                                <a href="detail.html?id=' + element.id + '">\
+                                                    <img src="' + element.imageUrl[1] + '" alt="" class="img-responsive">\
+                                                </a>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                    <a href="detail.html?id=' + element.id + '" class="invisible">\
+                                        <img src="img/product1.jpg" alt="" class="img-responsive">\
+                                    </a>\
+                                    <div class="text">\
+                                        <h3><a href="detail.html?id=' + element.id + '">' + element.name + '</a></h3>\
+                                        <p class="price">$' + element.price + '</p>\
+                                        <p class="buttons">\
+                                            <a href="detail.html?id=' + element.id + '" class="btn btn-default">View detail</a>\
+                                            <a href="#" onclick="addToCart(\'' + element.id + '\')" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>\
+                                        </p>\
+                                    </div >\
+                                </div >\
+                            </div > ';
+
+                            if (isAdmin) {
+                                newComponent = '<div class="col-md-4 col-sm-6">\
+                            <div class="product">\
+                                    <div class="flip-container">\
+                                        <div class="flipper">\
+                                            <div class="front">\
+                                                <a href="detail.html?id=' + element.id + '">\
+                                                    <img src="' + element.imageUrl[0] + '" alt="" class="img-responsive">\
+                                                </a>\
+                                            </div>\
+                                            <div class="back">\
+                                                <a href="detail.html?id=' + element.id + '">\
+                                                    <img src="' + element.imageUrl[1] + '" alt="" class="img-responsive">\
+                                                </a>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                    <a href="detail.html?id=' + element.id + '" class="invisible">\
+                                        <img src="img/product1.jpg" alt="" class="img-responsive">\
+                                    </a>\
+                                    <div class="text">\
+                                        <h3><a href="detail.html?id=' + element.id + '">' + element.name + '</a></h3>\
+                                        <p class="price">$' + element.price + '</p>\
+                                        <p class="buttons">\
+                                            <a href="detail.html?id=' + element.id + '" class="btn btn-default">View detail</a>\
+                                            <a href="#" onclick="addToCart(\'' + element.id + '\')" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>\
+                                        </p>\
+                                        <div class="buttons" style="margin-top: -20px; margin-bottom: 18px;">\
+                                            <button class="btn btn-warning btn-edit" \
+                                             ><i class="fa fa-edit" ></i> Edit</button>\
+                                             <button class = "btn btn-danger btn-del"\
+                                             > <i class="fa fa-trash" aria-hidden="true"></i> Delete</button >\
+                                        </div >\
+                                    </div >\
+                                </div >\
+                            </div > ';
+
+                            }
+                            $('#products').append(newComponent);
+                        });
+
+                    });
+
+                }
+            });
+        }
+
         $(document).ready(function () {
 
             $.ajaxSetup({
@@ -467,9 +558,10 @@ _________________________________________________________ -->
             $.getJSON('/tags-all-detail', function (data) {
 
                 $.each(data, function (index, element) {
-                    $('#add-tags').append('<div class="add_checkbox checkbox" style="margin-right: 32px; margin-top: 10px !important"><label><input type="checkbox" name="'+ element.tag_id+ '" value="' + element.tag_id + '">' + element.name + '</label></div>');
+                    $('#add-tags').append('<div class="add_checkbox checkbox" style="margin-right: 32px; margin-top: 10px !important"><label><input type="checkbox" name="' + element.tag_id + '" value="' + element.tag_id + '">' + element.name + '</label></div>');
                 })
             });
+
         });
 
     </script>

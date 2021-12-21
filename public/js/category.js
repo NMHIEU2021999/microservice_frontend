@@ -38,18 +38,39 @@ $('#add-product').on('submit', function (e) {
         xhrFields: {
             withCredentials: true
         },
-        async: true,
+        async: false,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
-            if(addTimeout){
-                addTimeout.clearTimeout();
-            }
-            closeAddForm();
-            $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
-            setTimeout(()=>{
-                $("#user-message").html('');
-            }, 8000);
-            console.log("data");
+            let obj = {};
+            obj.catalogId = data.id;
+            obj.tagId = tags;
+            $.ajax({
+                url: "tag-catalogue",
+                type: "POST",
+                xhrFields: {
+                    withCredentials: true
+                },
+                async: false,
+                data: JSON.stringify(obj),
+                success: function (res, textStatus, jqXHR) {
+                    if (addTimeout) {
+                        addTimeout.clearTimeout();
+                    }
+                    closeAddForm();
+                    $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
+                    setTimeout(() => {
+                        $("#user-message").html('');
+                    }, 8000);
+                    reloadProducts();
+                }, error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('error: ' + JSON.stringify(jqXHR));
+                    console.log('error: ' + textStatus);
+                    console.log('error: ' + errorThrown);
+                },
+            });
+           
+
             // location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -74,5 +95,5 @@ closeEditForm = () => {
 
 $('#edit-product').on('submit', function (e) {
     e.preventDefault();
-   
+
 });

@@ -41,7 +41,7 @@ $('#add-product').on('submit', function (e) {
         xhrFields: {
             withCredentials: true
         },
-        async: true,
+        async: false,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
             location.reload();

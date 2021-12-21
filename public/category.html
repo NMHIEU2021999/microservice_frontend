@@ -134,7 +134,7 @@ _________________________________________________________ -->
                                     </button>
                                 </div>
                                 <div class="container"></div>
-                                <form id='add-staff' onsubmit="submitAddForm()">
+                                <form id='add-product'>
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Product name</label>
@@ -376,7 +376,6 @@ _________________________________________________________ -->
                 }
             });
             username($.cookie('logged_in'), function () {
-                debugger
                 if (isAdmin) {
                     $('#add-container').append(
                         '<button onclick = "openAddForm()"\

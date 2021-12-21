@@ -181,8 +181,6 @@ function username(id, callback) {
                 }else{
                     isAdmin = false;
                 }
-
-                console.log("isAdmin: " + isAdmin);
                 
                 callback(json.firstName + " " + json.lastName);
             } else {

@@ -269,17 +269,19 @@ _________________________________________________________ -->
                     });
                 }
             });
-            debugger
-            if (isAdmin) {
-          
-                $('#add-container').append(
+            username($.cookie('logged_in'), function(){
+                debugger
+                if(isAdmin){
+                    $('#add-container').append(
                     '<button\
                     className="btn btn-add btn-success" >\
                     <i className="fas fa-plus" aria-hidden="true"></i>\
                     &nbsp; Add product\
                     </button>'
                 );
-            }
+                }
+              
+            });
         });
 
     </script>

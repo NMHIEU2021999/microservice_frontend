@@ -189,6 +189,71 @@ _________________________________________________________ -->
                         </div>
                     </div>
 
+                    <div class="modal fade" id="modalEditForm" data-keyboard="false" data-backdrop="static">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit product</h4>
+                                    <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="container"></div>
+                                <form id='edit-product'>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Product name</label>
+                                            <input required="required" name="name" type="text" id="edit-name" class="form-control"
+                                                placeholder="Enter product name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input required="required" name="price" id="edit-price" type="number" class="form-control"
+                                                placeholder="Enter price of products" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Count</label>
+                                            <input required="required" name="count" id="edit-count"   type="number" class="form-control"
+                                                placeholder="Enter number of products" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="description" id="edit-description"  required="required" class="form-control"
+                                                rows="3" style="max-width: 100%; max-height: 100px;"
+                                                placeholder="Some descriptions about product"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tags</label>
+                                            <div id="add-tags" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image1</label>
+                                            <div class="col-5" style="margin-right: auto">
+                                                <input type="file" required="required" name="image3" id="image3">
+                                                <img id="img3" alt="3rd image" height="240px" style="display: none">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image2</label>
+                                            <div class="col-5" style="margin-right: auto">
+                                                <input type="file" required="required" name="image4" id="image4">
+                                                <img id="img4" alt="4th image" height="240px" style="display: none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary col-2"
+                                            onclick="closeEditForm()">Cancel</button>
+                                        <button type='submit' class="btn btn-primary col-2">Add</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- *** PRODUCTS *** -->
 
                     <div id="row products">

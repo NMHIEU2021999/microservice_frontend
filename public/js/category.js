@@ -54,3 +54,19 @@ $('#add-product').on('submit', function (e) {
         },
     });
 });
+
+////////////////////////////////////
+openEditForm = () => {
+    $('#modalEditForm').modal('show');
+}
+
+closeEditForm = () => {
+    $('#modalEditForm').modal('hide');
+    $("#img3").hide();
+    $("#img4").hide();
+}
+
+$('#edit-product').on('submit', function (e) {
+    e.preventDefault();
+   
+});

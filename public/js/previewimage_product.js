@@ -17,3 +17,11 @@ $("#image1").change(function() {
 $("#image2").change(function() {
   readURL(this, '#img2');
 });
+
+$("#image3").change(function() {
+  readURL(this, '#img3');
+});
+
+$("#image4").change(function() {
+  readURL(this, '#img4');
+});

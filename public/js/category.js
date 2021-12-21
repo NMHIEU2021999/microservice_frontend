@@ -45,7 +45,7 @@ $('#add-product').on('submit', function (e) {
         },
         crossDomain: true,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("Cookie", $.cookie);
+            xhr.setRequestHeader("Cookie", $.cookie());
         },
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {

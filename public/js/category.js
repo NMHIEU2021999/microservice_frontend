@@ -4,7 +4,7 @@ openAddForm = () => {
 
 closeAddForm = ()=>{
     $('#modalAddForm').modal('hide');
-    $('#add-product')[0].reset();
+    $('#add-product').trigger("reset");
 }
 
 submitAddForm = (e)=>{

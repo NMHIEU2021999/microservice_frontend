@@ -48,7 +48,8 @@ $('#add-product').on('submit', function (e) {
             $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
             setTimeout(()=>{
                 $("#user-message").html('');
-            }, 2500);
+            }, 8000);
+            console.log("data");
             // location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {

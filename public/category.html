@@ -160,7 +160,7 @@ _________________________________________________________ -->
                                         </div>
                                         <div class="form-group">
                                             <label>Tags</label>
-                                            <div id="add-tags" style="display: flex; flex-wrap: wrap;">
+                                            <div id="add-tags" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
 
                                             </div>
                                         </div>
@@ -399,7 +399,7 @@ _________________________________________________________ -->
             $.getJSON('/tags-all-detail', function (data) {
 
                 $.each(data, function (index, element) {
-                    $('#add-tags').append('<div class="checkbox" style="margin-right: 36px;"><label><input type="checkbox" class="add_checkbox" name="'+ element.tag_id+ '" value="' + element.tag_id + '">' + element.name + '</label></div>');
+                    $('#add-tags').append('<div class="checkbox" style="margin-right: 36px; margin-top: 10px !important"><label><input type="checkbox" class="add_checkbox" name="'+ element.tag_id+ '" value="' + element.tag_id + '">' + element.name + '</label></div>');
                 })
             });
         });

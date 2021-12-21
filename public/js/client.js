@@ -170,6 +170,10 @@ function updateToCart(id, quantity, next) {
 
 function username(id, callback) {
     console.log("Requesting user account information " + id);
+    if(!id){
+        isAdmin = false;
+        return;
+    }
     $.ajax({
         url: "customers/" + id,
         type: "GET",

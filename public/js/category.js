@@ -15,6 +15,8 @@ submitAddForm = (e) => {
     console.log("abcd")
 }
 
+let addTimeout;
+
 $('#add-product').on('submit', function (e) {
     e.preventDefault();
     let data = {};
@@ -29,11 +31,6 @@ $('#add-product').on('submit', function (e) {
     $('.add_checkbox input:checked').each(function () {
         tags.push($(this).attr('name'));
     });
-    console.log(data)
-    console.log(tags)
-    // $.ajaxSetup({
-    //     contentType: "application/json; charset=utf-8"
-    // });
 
     $.ajax({
         url: "catalogue",
@@ -44,7 +41,14 @@ $('#add-product').on('submit', function (e) {
         async: true,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
-            location.reload();
+            addTimeout.clearTimeOut();
+            $('#alertContent').html("A new product has been added successfully!");
+            closeAddForm();
+            $('.alert').alert();
+            addTimeout= setTimeout(()=>{
+                $('.alert').alert('close');
+            }, 2500);
+            // location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);

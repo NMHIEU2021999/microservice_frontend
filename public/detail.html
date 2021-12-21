@@ -36,6 +36,8 @@
     <script src="js/respond.min.js"></script>
 
     <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- theme stylesheet -->
 
 
 </head>
@@ -99,6 +101,7 @@
                                     cart</a>
                                 <a href="basket.html" class="btn btn-default"><i
                                         class="fa fa-heart"></i> Add to wishlist</a>
+                                <a id="try-on-button" href="#" class="btn btn-success" style="color: #fff;background-color: #343a40;border-color: #343a40;"><i class="fas fa-tshirt"></i> Try on &ensp;<span class="badge badge-danger" style="color: #dc3545;">New</span></a>
                             </p>
 
 
@@ -166,7 +169,42 @@
         <!-- /.container -->
     </div>
     <!-- /#content -->
+    <div class="modal fade" id="try-on-modal" tabindex="-1" role="dialog"
+         aria-labelledby="Try on" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="Login">Customer login</h4>
+                </div>
+                <div class="modal-body">
 
+                    <div id="login-message"> </div>
+
+                    <form action="index.html" method="get">
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   name="username"
+                                   id="username-modal" placeholder="username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control"
+                                   name="password"
+                                   id="password-modal" placeholder="password">
+                        </div>
+
+                        <p class="text-center">
+                            <button class="btn btn-primary" href="#" onclick="return login()"><i
+                                    class="fa fa-sign-in"></i> Log in
+                            </button>
+                        </p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="footer"></div>
 </div>
 <!-- /#all -->
@@ -174,7 +212,7 @@
 
 <!-- *** SCRIPTS TO INCLUDE ***
 _________________________________________________________ -->
-<script src="js/jquery-1.11.0.min.js"></script>
+<!-- <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/waypoints.min.js"></script>
@@ -262,7 +300,7 @@ _________________________________________________________ -->
 
     });
 
-</script>
+</script> -->
 
 </body>
 

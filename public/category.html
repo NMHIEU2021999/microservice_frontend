@@ -283,7 +283,7 @@ _________________________________________________________ -->
             });
 
             $.getJSON('/tags', function (data) {
-                console.log(data);
+                // console.log(data);
                 $.each(data.tags, function (index, element) {
                     console.log("Current tags: " + tags);
                     if (tags != null && tags != "" && tags != true && tags.indexOf(element) > -1) {

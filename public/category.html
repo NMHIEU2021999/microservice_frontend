@@ -129,7 +129,8 @@ _________________________________________________________ -->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Add new product</h4>
-                                    <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -138,23 +139,27 @@ _________________________________________________________ -->
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Product name</label>
-                                            <input required="required" name="name"
-                                                type="text" class="form-control" placeholder="Enter product name" />
+                                            <input required="required" name="name" type="text" class="form-control"
+                                                placeholder="Enter product name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input required="required" name="price"
-                                                type="number" class="form-control" placeholder="Enter price of products" />
+                                            <input required="required" name="price" type="number" class="form-control"
+                                                placeholder="Enter price of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Count</label>
-                                            <input required="required" name="count"
-                                                type="number" class="form-control" placeholder="Enter number of products" />
+                                            <input required="required" name="count" type="number" class="form-control"
+                                                placeholder="Enter number of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" required="required"
-                                                class="form-control" rows="3" style="max-width: 100%; max-height: 100px;" placeholder="Some descriptions about product"></textarea>
+                                            <textarea name="description" required="required" class="form-control"
+                                                rows="3" style="max-width: 100%; max-height: 100px;"
+                                                placeholder="Some descriptions about product"></textarea>
+                                        </div>
+                                        <div class="form-group" id="add-tags">
+
                                         </div>
                                         <div class="form-group">
                                             <label>Image1</label>
@@ -389,15 +394,10 @@ _________________________________________________________ -->
             });
 
             $.getJSON('/tags-all-detail', function (data) {
-                console.log(data);
-                // $.each(data.tags, function (index, element) {
-                //     console.log("Current tags: " + tags);
-                //     if (tags != null && tags != "" && tags != true && tags.indexOf(element) > -1) {
-                //         $('#filters').append('<div class="checkbox"><label><input type="checkbox" checked="true" value="' + element + '">' + element + '</label></div>');
-                //     } else {
-                //         $('#filters').append('<div class="checkbox"><label><input type="checkbox" value="' + element + '">' + element + '</label></div>');
-                //     }
-                // })
+
+                $.each(data, function (index, element) {
+                    $('#add-tags').append('<div class="checkbox"><label><input type="checkbox" class="add_checkbox" name="'+ element.tag_id+ '" checked="false" value="' + element.tag_id + '">' + element.name + '</label></div>');
+                })
             });
         });
 

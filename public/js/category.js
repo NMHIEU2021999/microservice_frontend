@@ -42,7 +42,7 @@ $('#add-product').on('submit', function (e) {
             // if(addTimeout){
             //     addTimeout.clearTimeout();
             // }
-            $("#user-message").html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
+            $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
             // location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {

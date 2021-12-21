@@ -52,17 +52,6 @@
       .pipe(res);
   });
 
-  app.use("/tags*", function (req, res, next) {
-    proxy.web(
-      req,
-      res,
-      {
-        target: endpoints.tagsUrl + req.url.toString(),
-      },
-      next
-    );
-  });
-
   app.get("/tags", function (req, res, next) {
     helpers.simpleHttpRequest(endpoints.tagsUrl, res, next);
   });

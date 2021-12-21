@@ -5,6 +5,8 @@ openAddForm = () => {
 closeAddForm = ()=>{
     $('#modalAddForm').modal('hide');
     $('#add-product').trigger("reset");
+    $("#image1").attr('src', "");
+    $("#image2").attr('src', "");
 }
 
 submitAddForm = (e)=>{

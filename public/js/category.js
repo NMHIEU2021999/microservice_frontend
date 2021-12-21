@@ -15,8 +15,6 @@ submitAddForm = (e) => {
     console.log("abcd")
 }
 
-let addTimeout;
-
 $('#add-product').on('submit', function (e) {
     e.preventDefault();
     let data = {};
@@ -41,15 +39,10 @@ $('#add-product').on('submit', function (e) {
         async: true,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
-            if(addTimeout){
-                addTimeout.clearTimeout();
-            }
-            $('#alertContent').html("A new product has been added successfully!");
-            closeAddForm();
-            $('.alert').alert();
-            addTimeout= setTimeout(()=>{
-                $('.alert').alert('close');
-            }, 2500);
+            // if(addTimeout){
+            //     addTimeout.clearTimeout();
+            // }
+            $("#user-message").html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
             // location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {

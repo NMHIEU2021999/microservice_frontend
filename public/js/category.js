@@ -1,4 +1,3 @@
-const e = require("express");
 
 openAddForm = () => {
     $('#modalAddForm').modal('show');
@@ -89,15 +88,13 @@ openEditForm = (id) => {
     console.log(id);
     $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
-    $.getJSON('/catalogue/'+id, function (data) {
-       
-    })
+
     $.ajax({
         url: '/catalogue/'+id,
         type: "GET",
         async: false,
-        data: JSON.stringify(data),
-        success: function (data, textStatus, jqXHR) {
+        success: function (res, textStatus, jqXHR) {
+            data = JSON.parse(res);
             console.log(data);
             $("#edit-name").val(data.name);
             $("#edit-price").val(data.price);
@@ -107,10 +104,12 @@ openEditForm = (id) => {
             $("#img3").attr("oldSrc", data.imageUrl[0]);
             $("#img4").attr("src", data.imageUrl[1]);
             $("#img4").attr("oldSrc", data.imageUrl[1]);
+            $("#img3").show();
+            $('#img4').show();
 
-            $('.add_checkbox').each(function () {
+            $('.edit_checkbox input').each(function () {
                 let tagName = $(this).attr('tagname');
-                if(data.tag.indexOf(tagName) !== -1){
+                if(data.tag.indexOf(tagName) != -1){
                     $(this).attr('checked', true);
                 }else{
                     $(this).attr('checked', false);

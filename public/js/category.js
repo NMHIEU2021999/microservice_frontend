@@ -85,7 +85,7 @@ $('#add-product').on('submit', function (e) {
 
 ////////////////////////////////////
 openEditForm = (id) => {
-    console.log(id);
+    // console.log(id);
     $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
 
@@ -163,7 +163,7 @@ $('#edit-product').on('submit', function (e) {
 
 openDeleteForm = (id) => {
     $('#modalDeleteForm').modal('show');
-    $("delete-id").val(id);
+    $("#delete-id").val(id);
     console.log(id);
 }
 

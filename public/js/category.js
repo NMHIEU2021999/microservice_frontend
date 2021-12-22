@@ -95,6 +95,7 @@ openEditForm = (id) => {
         async: false,
         success: function (res, textStatus, jqXHR) {
             data = JSON.parse(res);
+            console.log(data);
             $("#edit-name").val(data.name);
             $("#edit-price").val(data.price);
             $("#edit-count").val(data.count);
@@ -103,10 +104,12 @@ openEditForm = (id) => {
             $("#img3").attr("oldSrc", data.imageUrl[0]);
             $("#img4").attr("src", data.imageUrl[1]);
             $("#img4").attr("oldSrc", data.imageUrl[1]);
+            $("#img3").show();
+            $('#img4').show();
 
-            $('.add_checkbox').each(function () {
+            $('.edit_checkbox').each(function () {
                 let tagName = $(this).attr('tagname');
-                if(data.tag.indexOf(tagName) !== -1){
+                if(data.tag.indexOf(tagName) != -1){
                     $(this).attr('checked', true);
                 }else{
                     $(this).attr('checked', false);

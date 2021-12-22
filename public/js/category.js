@@ -212,7 +212,6 @@ $('#edit-product').on('submit', function (e) {
 openDeleteForm = (id) => {
     $('#modalDeleteForm').modal('show');
     $("#delete-id").val(id);
-    console.log(id);
 }
 
 closeDeleteForm = () => {
@@ -222,5 +221,29 @@ closeDeleteForm = () => {
 $('#delete-product').on('submit', function (e) {
     e.preventDefault();
 
-  
+    $.ajax({
+        url: "catalogue/" +  $("#delete-id").val(),
+        type: "DELETE",
+        xhrFields: {
+            withCredentials: true
+        },
+        async: false,
+        success: function (data, textStatus, jqXHR) {
+            if (addTimeout) {
+                addTimeout.clearTimeout();
+            }
+            closeDeleteForm();
+            $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A product has been removed successfully!" + '</div>');
+            setTimeout(() => {
+                $("#user-message").html('');
+            }, 8000);
+            reloadProducts();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log('error: ' + JSON.stringify(jqXHR));
+            console.log('error: ' + textStatus);
+            console.log('error: ' + errorThrown);
+        },
+    });
 });

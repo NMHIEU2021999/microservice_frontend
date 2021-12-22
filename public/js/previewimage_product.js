@@ -18,7 +18,7 @@ function readURL2(input, output) {
     }
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }else{
-    $(output).attr('src', $(output).attr('oldSr'));
+    $(output).attr('src', $(output).attr('oldSrc'));
   }
 }
 

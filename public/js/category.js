@@ -1,3 +1,5 @@
+const e = require("express");
+
 openAddForm = () => {
     $('#modalAddForm').modal('show');
 }
@@ -88,8 +90,40 @@ openEditForm = (id) => {
     $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
     $.getJSON('/catalogue/'+id, function (data) {
-        console.log(data);
+       
     })
+    $.ajax({
+        url: '/catalogue/'+id,
+        type: "GET",
+        async: false,
+        data: JSON.stringify(data),
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            $("#edit-name").val(data.name);
+            $("#edit-price").val(data.price);
+            $("#edit-count").val(data.count);
+            $("#edit-description").val(data.description);
+            $("#img3").attr("src", data.imageUrl[0]);
+            $("#img3").attr("oldSrc", data.imageUrl[0]);
+            $("#img4").attr("src", data.imageUrl[1]);
+            $("#img4").attr("oldSrc", data.imageUrl[1]);
+
+            $('.add_checkbox').each(function () {
+                let tagName = $(this).attr('tagname');
+                if(data.tag.indexOf(tagName) !== -1){
+                    $(this).attr('checked', true);
+                }else{
+                    $(this).attr('checked', false);
+                }
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log('error: ' + JSON.stringify(jqXHR));
+            console.log('error: ' + textStatus);
+            console.log('error: ' + errorThrown);
+        },
+    });
 }
 
 closeEditForm = () => {

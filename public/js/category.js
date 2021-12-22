@@ -83,7 +83,8 @@ $('#add-product').on('submit', function (e) {
 });
 
 ////////////////////////////////////
-openEditForm = () => {
+openEditForm = (id) => {
+    console.log(id);
     $('#modalEditForm').modal('show');
 }
 

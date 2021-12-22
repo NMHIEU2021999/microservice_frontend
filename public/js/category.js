@@ -1,5 +1,3 @@
-const e = require("express");
-
 openAddForm = () => {
     $('#modalAddForm').modal('show');
 }

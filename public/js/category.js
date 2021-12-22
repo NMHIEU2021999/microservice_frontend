@@ -1,3 +1,4 @@
+
 openAddForm = () => {
     $('#modalAddForm').modal('show');
 }
@@ -93,8 +94,7 @@ openEditForm = (id) => {
         type: "GET",
         async: false,
         success: function (res, textStatus, jqXHR) {
-            let data = JSON.stringify(res);
-            console.log(data);
+            data = JSON.parse(res);
             $("#edit-name").val(data.name);
             $("#edit-price").val(data.price);
             $("#edit-count").val(data.count);

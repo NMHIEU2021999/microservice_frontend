@@ -159,3 +159,20 @@ $('#edit-product').on('submit', function (e) {
     console.log(data);
     console.log(tags);
 });
+
+
+openDeleteForm = (id) => {
+    $('#modalDeleteForm').modal('show');
+    $("delete-id").val(id);
+    console.log(id);
+}
+
+closeDeleteForm = () => {
+    $('#modalDeleteForm').modal('hide');
+}
+
+$('#delete-product').on('submit', function (e) {
+    e.preventDefault();
+
+  
+});

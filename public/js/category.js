@@ -85,7 +85,7 @@ $('#add-product').on('submit', function (e) {
 
 ////////////////////////////////////
 openEditForm = (id) => {
-    console.log(id);
+    // console.log(id);
     $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
 
@@ -95,7 +95,7 @@ openEditForm = (id) => {
         async: false,
         success: function (res, textStatus, jqXHR) {
             data = JSON.parse(res);
-            console.log(data);
+            // console.log(data);
             $("#edit-name").val(data.name);
             $("#edit-price").val(data.price);
             $("#edit-count").val(data.count);
@@ -133,5 +133,46 @@ closeEditForm = () => {
 
 $('#edit-product').on('submit', function (e) {
     e.preventDefault();
+    let data = {};
+    data.name = $("#edit-name").val();
+    data.price = $("#edit-price").val();
+    data.count = $("#edit-count").val();
+    data.description = $("#edit-description").val();
+    data.images = [];
+    if($("#img3").attr("src") && ($("#img3").attr("src") != $("#img3").attr("oldSrc"))){
+        data.images.push($("#img3").attr("src").split('base64,')[1]);
+    }else{
+        data.images.push("");
+    }
 
+    if($("#img4").attr("src") && ($("#img4").attr("src") != $("#img4").attr("oldSrc"))){
+        data.images.push($("#img4").attr("src").split('base64,')[1]);
+    }else{
+        data.images.push("");
+    }
+
+    let tags = [];
+    $('.edit_checkbox input:checked').each(function () {
+        tags.push($(this).attr('tagname'));
+    });
+
+    console.log(data);
+    console.log(tags);
+});
+
+
+openDeleteForm = (id) => {
+    $('#modalDeleteForm').modal('show');
+    $("#delete-id").val(id);
+    console.log(id);
+}
+
+closeDeleteForm = () => {
+    $('#modalDeleteForm').modal('hide');
+}
+
+$('#delete-product').on('submit', function (e) {
+    e.preventDefault();
+
+  
 });

@@ -145,7 +145,7 @@ _________________________________________________________ -->
                                         <div class="form-group">
                                             <label>Price</label>
                                             <input required="required" name="price" id="add-price" type="number"
-                                                class="form-control" placeholder="Enter price of products" />
+                                                class="form-control" step="0.01" placeholder="Enter price of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Count</label>
@@ -214,7 +214,7 @@ _________________________________________________________ -->
                                         <div class="form-group">
                                             <label>Price</label>
                                             <input required="required" name="price" id="edit-price" type="number"
-                                                class="form-control" placeholder="Enter price of products" />
+                                                class="form-control" step="0.01" placeholder="Enter price of products" />
                                         </div>
                                         <div class="form-group">
                                             <label>Count</label>
@@ -238,15 +238,15 @@ _________________________________________________________ -->
                                         <div class="form-group">
                                             <label>Image1</label>
                                             <div class="col-5" style="margin-right: auto">
-                                                <input type="file" required="required" name="image3" id="image3">
-                                                <img id="img3" alt="3rd image" height="240px" style="display: none">
+                                                <input type="file" name="image3" id="image3">
+                                                <img id="img3" alt="1st image" height="240px" style="display: none">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Image2</label>
                                             <div class="col-5" style="margin-right: auto">
-                                                <input type="file" required="required" name="image4" id="image4">
-                                                <img id="img4" alt="4th image" height="240px" style="display: none">
+                                                <input type="file" name="image4" id="image4">
+                                                <img id="img4" alt="2nd image" height="240px" style="display: none">
                                             </div>
                                         </div>
                                     </div>
@@ -254,6 +254,33 @@ _________________________________________________________ -->
                                         <button type="button" class="btn btn-secondary col-2"
                                             onclick="closeEditForm()">Cancel</button>
                                         <button type='submit' class="btn btn-primary col-2">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="modalDeleteForm" data-keyboard="false" data-backdrop="static">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete product</h4>
+                                    <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="container"></div>
+                                <form id='delete-product'>
+                                    <div class="modal-body">
+                                        <input required="required" name="id" id="delete-id" type="text"
+                                                class="form-control" style="display: none;" />
+                                        <h6 style="font-size: 13px; font-weight: 400;">Are you sure to delete this product?</h6>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary col-2"
+                                            onclick="closeDeleteForm()">Cancel</button>
+                                        <button type='submit' class="btn btn-primary col-2">Delete</button>
                                     </div>
                                 </form>
                             </div>
@@ -389,7 +416,7 @@ _________________________________________________________ -->
                                         <div class="buttons" style="margin-top: -20px; margin-bottom: 18px;">\
                                             <button class="btn btn-warning btn-edit" onclick="openEditForm(\'' + element.id + '\')" \
                                              ><i class="fa fa-edit" ></i> Edit</button>\
-                                             <button class = "btn btn-danger btn-del"\
+                                             <button class = "btn btn-danger btn-del" onclick="openDeleteForm(\'' + element.id + '\')" \
                                              > <i class="fa fa-trash" aria-hidden="true"></i> Delete</button >\
                                         </div >\
                                     </div >\
@@ -560,7 +587,7 @@ _________________________________________________________ -->
                                         <div class="buttons" style="margin-top: -20px; margin-bottom: 18px;">\
                                             <button class="btn btn-warning btn-edit" onclick="openEditForm(\'' + element.id + '\')" \
                                              ><i class="fa fa-edit" ></i> Edit</button>\
-                                             <button class = "btn btn-danger btn-del"\
+                                             <button class = "btn btn-danger btn-del" onclick="openDeleteForm(\'' + element.id + '\')" \
                                              > <i class="fa fa-trash" aria-hidden="true"></i> Delete</button >\
                                         </div >\
                                     </div >\

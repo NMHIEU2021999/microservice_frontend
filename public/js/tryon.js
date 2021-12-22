@@ -31,7 +31,7 @@ $('#tryOnForm').on('submit', function (e) {
     };
     console.log(data);
 
-    let url = "https://f14d-35-225-175-226.ngrok.io/api"
+    let url = "https://44de-35-225-175-226.ngrok.io/api"
     $.ajax({
         url: url,
         type: "POST",

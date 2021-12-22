@@ -7,6 +7,7 @@ closeTryOn = () => {
     $('#tryOnForm').trigger("reset");
     $("#img1").hide();
     $("#img2").hide();
+    $('#tryOnResult').hide();
 }
 
 $('#try-on-button').on('click',()=>{
@@ -29,16 +30,19 @@ $('#tryOnForm').on('submit', function (e) {
         per_img: $("#img1").attr("src").split('base64,')[1],
         clo_img: getBase64Image(document.getElementById("imageMain")),
     };
-    console.log(data);
+    console.log(JSON.stringify(data));
 
-    let url = "https://44de-35-225-175-226.ngrok.io/api"
+    let url = "https://27f9-35-225-175-226.ngrok.io/api"
+    $('#tryOnResult').show();
+    $("#tryOnLoading").show();
     $.ajax({
         url: url,
         type: "POST",
         async: true,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
+            $("#tryOnLoading").hide();
+            $("#img2").attr('src',"data:image/png;base64, " + data.results.img);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);

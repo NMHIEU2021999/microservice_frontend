@@ -107,7 +107,7 @@ openEditForm = (id) => {
             $("#img3").show();
             $('#img4').show();
 
-            $('.edit_checkbox').each(function () {
+            $('.edit_checkbox input').each(function () {
                 let tagName = $(this).attr('tagname');
                 if(data.tag.indexOf(tagName) != -1){
                     $(this).attr('checked', true);

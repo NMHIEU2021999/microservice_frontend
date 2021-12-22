@@ -153,9 +153,57 @@ $('#edit-product').on('submit', function (e) {
 
     let tags = [];
     $('.edit_checkbox input:checked').each(function () {
-        tags.push($(this).attr('tagname'));
+        tags.push($(this).attr('name'));
     });
 
+    $.ajax({
+        url: "catalogue/" +  $("#edit-id").val(),
+        type: "PUT",
+        xhrFields: {
+            withCredentials: true
+        },
+        async: false,
+        data: JSON.stringify(data),
+        success: function (data, textStatus, jqXHR) {
+            let obj = {};
+            obj.catalogId = $("#edit-id").val();
+            obj.tagId = tags;
+            $.ajax({
+                url: "tag-catalogue",
+                type: "POST",
+                xhrFields: {
+                    withCredentials: true
+                },
+                async: false,
+                data: JSON.stringify(obj),
+                success: function (res, textStatus, jqXHR) {
+                    if (addTimeout) {
+                        addTimeout.clearTimeout();
+                    }
+                    closeEditForm();
+                    $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A product has been updated successfully!" + '</div>');
+                    setTimeout(() => {
+                        $("#user-message").html('');
+                    }, 8000);
+                    reloadProducts();
+                }, error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('error: ' + JSON.stringify(jqXHR));
+                    console.log('error: ' + textStatus);
+                    console.log('error: ' + errorThrown);
+                },
+            });
+           
+
+            // location.reload();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log('error: ' + JSON.stringify(jqXHR));
+            console.log('error: ' + textStatus);
+            console.log('error: ' + errorThrown);
+        },
+    });
     console.log(data);
     console.log(tags);
 });

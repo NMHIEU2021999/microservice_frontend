@@ -31,19 +31,20 @@ $('#tryOnForm').on('submit', function (e) {
     };
     console.log(data);
 
-    // $.ajax({
-    //     url: "try-on",
-    //     type: "POST",
-    //     async: true,
-    //     data: JSON.stringify(data),
-    //     success: function (data, textStatus, jqXHR) {
-    //         location.reload();
-    //     },
-    //     error: function (jqXHR, textStatus, errorThrown) {
-    //         alert(errorThrown);
-    //         console.log('error: ' + JSON.stringify(jqXHR));
-    //         console.log('error: ' + textStatus);
-    //         console.log('error: ' + errorThrown);
-    //     },
-    // });
+    let url = "https://f14d-35-225-175-226.ngrok.io/api"
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: true,
+        data: JSON.stringify(data),
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log('error: ' + JSON.stringify(jqXHR));
+            console.log('error: ' + textStatus);
+            console.log('error: ' + errorThrown);
+        },
+    });
 });

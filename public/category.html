@@ -204,6 +204,8 @@ _________________________________________________________ -->
                                 <div class="container"></div>
                                 <form id='edit-product'>
                                     <div class="modal-body">
+                                        <input required="required" name="id" id="edit-id" type="text"
+                                                class="form-control" hidden />
                                         <div class="form-group">
                                             <label>Product name</label>
                                             <input required="required" name="name" type="text" id="edit-name"
@@ -590,6 +592,7 @@ _________________________________________________________ -->
 
                 $.each(data, function (index, element) {
                     $('#add-tags').append('<div class="add_checkbox checkbox" style="margin-right: 32px; margin-top: 10px !important"><label><input type="checkbox" name="' + element.tag_id + '" value="' + element.tag_id + '">' + element.name + '</label></div>');
+                    $('#edit-tags').append('<div class="edit_checkbox checkbox" style="margin-right: 32px; margin-top: 10px !important"><label><input type="checkbox" name="' + element.tag_id + '" tagname="' + element.name +  '"  value="' + element.tag_id + '">' + element.name + '</label></div>');
                 })
             });
 

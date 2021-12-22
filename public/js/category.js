@@ -85,7 +85,11 @@ $('#add-product').on('submit', function (e) {
 ////////////////////////////////////
 openEditForm = (id) => {
     console.log(id);
+    $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
+    $.getJSON('/catalogue/'+id, function (data) {
+        console.log(data);
+    })
 }
 
 closeEditForm = () => {

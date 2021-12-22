@@ -92,7 +92,8 @@ openEditForm = (id) => {
         url: '/catalogue/'+id,
         type: "GET",
         async: false,
-        success: function (data, textStatus, jqXHR) {
+        success: function (res, textStatus, jqXHR) {
+            let data = JSON.stringify(res);
             console.log(data);
             $("#edit-name").val(data.name);
             $("#edit-price").val(data.price);

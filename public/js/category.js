@@ -1,3 +1,5 @@
+const e = require("express");
+
 openAddForm = () => {
     $('#modalAddForm').modal('show');
 }
@@ -15,6 +17,8 @@ submitAddForm = (e) => {
     console.log("abcd")
 }
 
+let addTimeout;
+
 $('#add-product').on('submit', function (e) {
     e.preventDefault();
     let data = {};
@@ -29,11 +33,6 @@ $('#add-product').on('submit', function (e) {
     $('.add_checkbox input:checked').each(function () {
         tags.push($(this).attr('name'));
     });
-    console.log(data)
-    console.log(tags)
-    // $.ajaxSetup({
-    //     contentType: "application/json; charset=utf-8"
-    // });
 
     $.ajax({
         url: "catalogue",
@@ -41,10 +40,40 @@ $('#add-product').on('submit', function (e) {
         xhrFields: {
             withCredentials: true
         },
-        async: true,
+        async: false,
         data: JSON.stringify(data),
         success: function (data, textStatus, jqXHR) {
-            location.reload();
+            let obj = {};
+            obj.catalogId = data.id;
+            obj.tagId = tags;
+            $.ajax({
+                url: "tag-catalogue",
+                type: "POST",
+                xhrFields: {
+                    withCredentials: true
+                },
+                async: false,
+                data: JSON.stringify(obj),
+                success: function (res, textStatus, jqXHR) {
+                    if (addTimeout) {
+                        addTimeout.clearTimeout();
+                    }
+                    closeAddForm();
+                    $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A new product has been added successfully!" + '</div>');
+                    setTimeout(() => {
+                        $("#user-message").html('');
+                    }, 8000);
+                    reloadProducts();
+                }, error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('error: ' + JSON.stringify(jqXHR));
+                    console.log('error: ' + textStatus);
+                    console.log('error: ' + errorThrown);
+                },
+            });
+           
+
+            // location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
@@ -56,8 +85,45 @@ $('#add-product').on('submit', function (e) {
 });
 
 ////////////////////////////////////
-openEditForm = () => {
+openEditForm = (id) => {
+    console.log(id);
+    $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
+    $.getJSON('/catalogue/'+id, function (data) {
+       
+    })
+    $.ajax({
+        url: '/catalogue/'+id,
+        type: "GET",
+        async: false,
+        data: JSON.stringify(data),
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            $("#edit-name").val(data.name);
+            $("#edit-price").val(data.price);
+            $("#edit-count").val(data.count);
+            $("#edit-description").val(data.description);
+            $("#img3").attr("src", data.imageUrl[0]);
+            $("#img3").attr("oldSrc", data.imageUrl[0]);
+            $("#img4").attr("src", data.imageUrl[1]);
+            $("#img4").attr("oldSrc", data.imageUrl[1]);
+
+            $('.add_checkbox').each(function () {
+                let tagName = $(this).attr('tagname');
+                if(data.tag.indexOf(tagName) !== -1){
+                    $(this).attr('checked', true);
+                }else{
+                    $(this).attr('checked', false);
+                }
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log('error: ' + JSON.stringify(jqXHR));
+            console.log('error: ' + textStatus);
+            console.log('error: ' + errorThrown);
+        },
+    });
 }
 
 closeEditForm = () => {
@@ -68,5 +134,5 @@ closeEditForm = () => {
 
 $('#edit-product').on('submit', function (e) {
     e.preventDefault();
-   
+
 });

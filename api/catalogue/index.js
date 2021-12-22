@@ -87,7 +87,7 @@
     .pipe(res);
   });
 
-  app.post("/tags-catalog", function (req, res, next) {
+  app.post("/tag-catalogue", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
     request.post(url).json(req.body).on("error", function (e) {
       next(e);
@@ -95,7 +95,7 @@
     .pipe(res);
   });
 
-  app.delete("/tags-catalog", function (req, res, next) {
+  app.delete("/tag-catalogue", function (req, res, next) {
     var url = endpoints.catalogueUrl + req.url.toString();
     request.delete(url).json(req.body).on("error", function (e) {s
       next(e);

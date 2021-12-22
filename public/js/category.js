@@ -89,9 +89,7 @@ openEditForm = (id) => {
     console.log(id);
     $("#edit-id").val(id);
     $('#modalEditForm').modal('show');
-    $.getJSON('/catalogue/'+id, function (data) {
-       
-    })
+
     $.ajax({
         url: '/catalogue/'+id,
         type: "GET",

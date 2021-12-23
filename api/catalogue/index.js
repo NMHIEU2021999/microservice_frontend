@@ -104,7 +104,7 @@
   });
 
   app.post("/try-on", function (req, res, next) {
-    var url = "http://try-on/api";
+    var url = endpoints.tryOnUrl + '/api'
     request.post(url).json(req.body).on("error", function (e) {
       next(e);
     })

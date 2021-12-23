@@ -8,6 +8,8 @@ closeTryOn = () => {
     $("#img1").hide();
     $("#img2").hide();
     $('#tryOnResult').hide();
+    $('#tryOnInput').show();
+    $('#submitTryOn').prop('disabled', false);
 }
 
 $('#try-on-button').on('click',()=>{
@@ -35,6 +37,8 @@ $('#tryOnForm').on('submit', function (e) {
     let url = "https://27f9-35-225-175-226.ngrok.io/api"
     $('#tryOnResult').show();
     $("#tryOnLoading").show();
+    $('#tryOnInput').hide();
+    $('#submitTryOn').prop('disabled', true);
     $.ajax({
         url: url,
         type: "POST",
@@ -43,6 +47,7 @@ $('#tryOnForm').on('submit', function (e) {
         success: function (data, textStatus, jqXHR) {
             $("#tryOnLoading").hide();
             $("#img2").attr('src',"data:image/png;base64, " + data.results.img);
+            $('#img2').show();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
@@ -51,4 +56,10 @@ $('#tryOnForm').on('submit', function (e) {
             console.log('error: ' + errorThrown);
         },
     });
+
+    // setTimeout(()=>{
+    //     $("#tryOnLoading").hide();
+    //     $("#img2").attr('src',"data:image/png;base64, " + data.per_img);
+    //     $('#img2').show();
+    // },2000)
 });

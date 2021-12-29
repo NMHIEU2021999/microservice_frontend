@@ -94,7 +94,7 @@ openEditForm = (id) => {
         type: "GET",
         async: false,
         success: function (res, textStatus, jqXHR) {
-            data = JSON.parse(res);
+            // data = JSON.parse(res);
             // console.log(data);
             $("#edit-name").val(data.name);
             $("#edit-price").val(data.price);

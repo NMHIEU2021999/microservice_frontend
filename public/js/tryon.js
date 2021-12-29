@@ -34,7 +34,7 @@ $('#tryOnForm').on('submit', function (e) {
     };
     console.log(JSON.stringify(data));
 
-    let url = "https://7008-104-198-239-212.ngrok.io/api"
+    let url = "try-on"
     $('#tryOnResult').show();
     $("#tryOnLoading").show();
     $('#tryOnInput').hide();

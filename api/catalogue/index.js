@@ -17,7 +17,7 @@
       .pipe(res);
   });
 
-  app.get("/catalogue", function (req, res, next) {
+  app.get("/catalogue*", function (req, res, next) {
     helpers.simpleHttpRequest(
       endpoints.catalogueUrl + req.url.toString(),
       res,

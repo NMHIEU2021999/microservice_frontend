@@ -13,3 +13,7 @@
     border-radius: 50%;
     animation: spinner-border .75s linear infinite;
   }
+
+  .img-responsive{
+    margin: auto !important;
+  }

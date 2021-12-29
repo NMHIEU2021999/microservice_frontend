@@ -187,10 +187,15 @@ $('#edit-product').on('submit', function (e) {
                     }, 8000);
                     reloadProducts();
                 }, error: function (jqXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    console.log('error: ' + JSON.stringify(jqXHR));
-                    console.log('error: ' + textStatus);
-                    console.log('error: ' + errorThrown);
+                    if (addTimeout) {
+                        addTimeout.clearTimeout();
+                    }
+                    closeEditForm();
+                    $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A product has been updated successfully!" + '</div>');
+                    setTimeout(() => {
+                        $("#user-message").html('');
+                    }, 8000);
+                    reloadProducts();
                 },
             });
            
@@ -240,10 +245,15 @@ $('#delete-product').on('submit', function (e) {
             reloadProducts();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
-            console.log('error: ' + JSON.stringify(jqXHR));
-            console.log('error: ' + textStatus);
-            console.log('error: ' + errorThrown);
+            if (addTimeout) {
+                addTimeout.clearTimeout();
+            }
+            closeDeleteForm();
+            $("#user-message").html('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + "A product has been removed successfully!" + '</div>');
+            setTimeout(() => {
+                $("#user-message").html('');
+            }, 8000);
+            reloadProducts();
         },
     });
 });
